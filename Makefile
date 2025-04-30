@@ -1,6 +1,6 @@
 
-Build:
+build:
 	gcc Projeto3Sum.c threesum.c -o threesum -lm
-Run:
+run:
 	gcc Projeto3Sum.c threesum.c -o threesum -lm
 	./threesum
