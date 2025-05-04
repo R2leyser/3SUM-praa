@@ -30,5 +30,5 @@ int main () {
     printf(" --- 3SUM MELHORADO --- \n");
     treeSumMelhorado(A, n);
 
-    //ImprimeQtdOperacoes();
+    ImprimeQtdOperacoes();
 }

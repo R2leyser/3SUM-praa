@@ -28,7 +28,6 @@ void treeSumForcaBruta(int A[], int n) {
                     Triplas[1] = A[j];
                     Triplas[2] = A[k];
                 }
-                qtdOperacoes3SumFB+=3;
             }
         }
     }
@@ -57,7 +56,6 @@ void treeSumMelhorado(int A[], int n) {
                 Triplas[1] = A[j];
                 Triplas[2] = A[k];
             }
-            qtdOperacoes3SumMelhorado+=3;
         }
     }
     printf("%d triplas encontradas\n", qtdTrios);
