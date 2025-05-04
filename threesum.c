@@ -8,9 +8,12 @@ int qtdOperacoes3SumMelhorado = 0;
 
 /* treeSumForcaBruta(): */
 void treeSumForcaBruta(int A[], int n) {
+    int qtdTrios = 0;
+    
     MergeSortRecursivo(A, 0, n-1, n);
     int Triplas[3] = {0};
     if(A[0] == 0 && A[1] == 0 && A[2] == 0) {
+        qtdTrios++;
         printf("A soma de %d + %d + %d = 0\n", A[0], A[1], A[2]);
     }    
     for(int i = 0; i<n-2; i++){
@@ -20,7 +23,7 @@ void treeSumForcaBruta(int A[], int n) {
             for(int k = j+1; k<n; k++){
                 qtdOperacoes3SumFB++;
                 if (A[i] + A[j] + A[k] == 0 && (A[i] != Triplas[0] || A[j] != Triplas[1] || A[k] != Triplas[2]) ) {   
-                    printf("A soma de %d + %d + %d = 0\n", A[i], A[j], A[k]);
+                    printf("%d Tripla encontrada: [%d, %d, %d]\n", ++qtdTrios, A[i], A[j], A[k]);
                     Triplas[0] = A[i];
                     Triplas[1] = A[j];
                     Triplas[2] = A[k];
@@ -29,14 +32,17 @@ void treeSumForcaBruta(int A[], int n) {
             }
         }
     }
+    printf("%d triplas encontradas\n", qtdTrios);
 
 }
 
 /* treeSumMelhorado(): */
 void treeSumMelhorado(int A[], int n) {
+    int qtdTrios = 0;
     MergeSortRecursivo(A, 0, n-1, n);
     int Triplas[3] = {0};
     if(A[0] == 0 && A[1] == 0 && A[2] == 0) {
+        qtdTrios++;
         printf("A soma de %d + %d + %d = 0\n", A[0], A[1], A[2]);
     }
     for (int i = 0; i < n-2; i++) {
@@ -46,7 +52,7 @@ void treeSumMelhorado(int A[], int n) {
             int x = -(A[i] + A[j]);
             int k = BuscaBinaria(x, A, j+1, n-1);
             if (k != INT_MAX && (A[i] != Triplas[0] || A[j] != Triplas[1] || A[k] != Triplas[2]) ) {
-                printf("A soma de %d + %d + %d = 0\n", A[i], A[j], A[k]);
+                printf("%d Tripla encontrada: [%d, %d, %d]\n", ++qtdTrios, A[i], A[j], A[k]);
                 Triplas[0] = A[i];
                 Triplas[1] = A[j];
                 Triplas[2] = A[k];
@@ -54,6 +60,7 @@ void treeSumMelhorado(int A[], int n) {
             qtdOperacoes3SumMelhorado+=3;
         }
     }
+    printf("%d triplas encontradas\n", qtdTrios);
 }
 
 /* BuscaBinaria(): */
