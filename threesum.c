@@ -8,16 +8,24 @@ int qtdOperacoes3SumMelhorado = 0;
 
 /* treeSumForcaBruta(): */
 void treeSumForcaBruta(int A[], int n) {
+    MergeSortRecursivo(A, 0, n-1, n);
+    int Triplas[3] = {0};
+    if(A[0] == 0 && A[1] == 0 && A[2] == 0) {
+        printf("A soma de %d + %d + %d = 0\n", A[0], A[1], A[2]);
+    }    
     for(int i = 0; i<n-2; i++){
         qtdOperacoes3SumFB++;
         for(int j = i+1; j<n-1; j++){
             qtdOperacoes3SumFB++;
             for(int k = j+1; k<n; k++){
                 qtdOperacoes3SumFB++;
-                if (A[i] + A[j] + A[k] == 0) {
-                    qtdOperacoes3SumFB++;
+                if (A[i] + A[j] + A[k] == 0 && (A[i] != Triplas[0] || A[j] != Triplas[1] || A[k] != Triplas[2]) ) {   
                     printf("A soma de %d + %d + %d = 0\n", A[i], A[j], A[k]);
+                    Triplas[0] = A[i];
+                    Triplas[1] = A[j];
+                    Triplas[2] = A[k];
                 }
+                qtdOperacoes3SumFB+=3;
             }
         }
     }
@@ -27,15 +35,23 @@ void treeSumForcaBruta(int A[], int n) {
 /* treeSumMelhorado(): */
 void treeSumMelhorado(int A[], int n) {
     MergeSortRecursivo(A, 0, n-1, n);
+    int Triplas[3] = {0};
+    if(A[0] == 0 && A[1] == 0 && A[2] == 0) {
+        printf("A soma de %d + %d + %d = 0\n", A[0], A[1], A[2]);
+    }
     for (int i = 0; i < n-2; i++) {
         qtdOperacoes3SumMelhorado++;
         for (int j = i+1; j < n-1; j++) {
             qtdOperacoes3SumMelhorado++;
             int x = -(A[i] + A[j]);
             int k = BuscaBinaria(x, A, j+1, n-1);
-            if (k != INT_MAX) {
+            if (k != INT_MAX && (A[i] != Triplas[0] || A[j] != Triplas[1] || A[k] != Triplas[2]) ) {
                 printf("A soma de %d + %d + %d = 0\n", A[i], A[j], A[k]);
+                Triplas[0] = A[i];
+                Triplas[1] = A[j];
+                Triplas[2] = A[k];
             }
+            qtdOperacoes3SumMelhorado+=3;
         }
     }
 }
